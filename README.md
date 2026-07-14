@@ -42,7 +42,7 @@ Open in a browser: http://localhost:8080/
 | Non-existent file | `curl.exe -v http://localhost:8080/nope.html` | **404 Not Found** |
 | Non-GET method | `curl.exe -v -X POST http://localhost:8080/index.html` | **405 Method Not Allowed** |
 | Bad request | `python -c "import socket; s=socket.create_connection(('localhost',8080)); s.sendall(b'GARBAGE\r\n\r\n'); print(s.recv(200).decode()); s.close()"` | **400 Bad Request** |
-| Concurrency | open the page in 2+ tabs simultaneously | both load |
+| Concurrency | many tabs in browser simultaniously | both load |
 
 ## How It Works
 
