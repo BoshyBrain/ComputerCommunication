@@ -41,9 +41,7 @@ Open in a browser: http://localhost:8080/
 | Forbidden subdirectory | `curl.exe -v http://localhost:8080/private/secret.txt` | **403 Forbidden** |
 | Non-existent file | `curl.exe -v http://localhost:8080/nope.html` | **404 Not Found** |
 | Non-GET method | `curl.exe -v -X POST http://localhost:8080/index.html` | **405 Method Not Allowed** |
-| Bad request | `printf 'GARBAGE\r\n\r\n' \| nc localhost 8080 (for unix) ->
- python -c "import socket; s=socket.create_connection(('localhost',8080));
-  s.sendall(b'GARBAGE\r\n\r\n'); print(s.recv(200).decode()); s.close()" (for windows)` | **400 Bad Request** |
+| Bad request | `python -c "import socket; s=socket.create_connection(('localhost',8080)); s.sendall(b'GARBAGE\r\n\r\n'); print(s.recv(200).decode()); s.close()"` | **400 Bad Request** |
 | Concurrency | open the page in 2+ tabs simultaneously | both load |
 
 ## How It Works
